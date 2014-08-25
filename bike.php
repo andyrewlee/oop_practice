@@ -21,6 +21,7 @@ class Bike
     {
         echo "Driving...\n";
         $this->miles += 10;
+        return $this;
     }
 
     public function reverse()
@@ -33,28 +34,19 @@ class Bike
         else
         {
             echo "You can't have negative miles!\n";
+            return $this;
         }
     }
 }
 
 $bike1 = new Bike(300, 99999);
-$bike1->drive();
-$bike1->drive();
-$bike1->drive();
-$bike1->reverse();
-$bike1->display_info();
+$bike1->drive()->drive()->drive()->reverse()->display_info();
 
 $bike2 = new Bike(9999000, 77777777777777777);
-$bike2->drive();
-$bike2->drive();
-$bike2->reverse();
-$bike2->reverse();
-$bike2->display_info();
+$bike2->drive()->drive()->drive()->reverse()->reverse()->display_info();
 
 $bike3 = new Bike(120, 99);
-$bike3->reverse();
-$bike3->reverse();
-$bike3->reverse();
+$bike3->reverse()->reverse()->reverse();
 $bike3->display_info();
 
 ?>
