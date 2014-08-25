@@ -1,33 +1,33 @@
-<?php 
+<?php
 
 class Car
 {
- 	public $price;
- 	public $speed;
- 	public $fuel;
- 	public $mileage;
- 	public $tax;
+     public $price;
+     public $speed;
+     public $fuel;
+     public $mileage;
+     public $tax;
 
-	public function __construct($price, $speed, $fuel, $mileage)
-	{	
-		$this->price = $price;
-		$this->speed = $speed;
-		$this->fuel = $fuel;
-		$this->mileage = $mileage;
-	}
+    public function __construct($price, $speed, $fuel, $mileage)
+    {
+        $this->price = $price;
+        $this->speed = $speed;
+        $this->fuel = $fuel;
+        $this->mileage = $mileage;
+    }
 
-	public function Display_all() 
-	{
-		if ($this->price > 10000)
-		{
-			$this->tax = 0.15;
-		}
-		else 
-		{
-			$this->tax = 0.12;
-		}
-		echo "The price is: {$this->price} dollars. The speed is: {$this->speed} mph. The fuel is: {$this->fuel}. The mileage is: {$this->mileage} mpg. The tax is: {$this->tax}\n"; 	
- 	}
+    public function Display_all()
+    {
+        if ($this->price > 10000)
+        {
+            $this->tax = 0.15;
+        }
+        else
+        {
+            $this->tax = 0.12;
+        }
+        echo "The price is: {$this->price} dollars. The speed is: {$this->speed} mph. The fuel is: {$this->fuel}. The mileage is: {$this->mileage} mpg. The tax is: {$this->tax}\n";
+     }
 }
 
 $car1 = new Car(2000, 35, 'Full', 15);
@@ -47,4 +47,5 @@ $car5->Display_all();
 
 $car6 = new Car(200000000, 35, 'Empty', 15);
 $car6->Display_all();
+
 ?>
