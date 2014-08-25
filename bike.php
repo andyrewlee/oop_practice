@@ -57,5 +57,4 @@ $bike3->reverse();
 $bike3->reverse();
 $bike3->display_info();
 
-
 ?>
