@@ -14,7 +14,8 @@ class Bike
 
     public function display_info()
     {
-        echo "This bike costs ${$this->price} and has a max speed of {$this->max_speed} and has been driven  {$this->miles}  miles\n";
+        echo "This bike costs {$this->price} dollars and has a max speed of {$this->max_speed} and has been driven  {$this->miles}  miles\n";
+        return $this;
     }
 
     public function drive()
@@ -30,6 +31,7 @@ class Bike
         {
             echo "Reversing...\n";
             $this->miles -= 5;
+            return $this;
         }
         else
         {
