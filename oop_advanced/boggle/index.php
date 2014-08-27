@@ -4,6 +4,23 @@
         <meta charset="utf-8">
         <title>Boggle</title>
         <link href="style.css" rel="stylesheet" type="text/css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                // alert('hello');
+
+                $('td').on('click', function(){
+
+                    $current = $('#enter').attr('value');
+                    $this_html = $(this).html();
+                    $new_attr = $current + $this_html;
+                    $('#enter').attr('value', $new_attr);
+                });
+
+
+            });
+
+        </script>
     </head>
     <body>
         <div id="container">
@@ -36,7 +53,7 @@
                     </tr>
                 </table>
                 <form action="process.php" method="post">
-                    <input type="text" name="word">
+                    <input id="enter" type="text" name="word" value="">
                     <input type="submit" value="Submit">
                 </form>
             </div>

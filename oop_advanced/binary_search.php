@@ -24,8 +24,7 @@ class Tree
             $this->addBranch($branched_array[$i], $this->root);
         }
     }
-
-    function convert_to_branch($array)
+function convert_to_branch($array)
     {
         $node_array = array();
 
