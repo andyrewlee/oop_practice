@@ -1,83 +1,82 @@
-<?php 
+<?php
 
 class Branch
 {
-	public $int;
-	public $left;
-	public $right;
+    public $int;
+    public $left;
+    public $right;
 
-	function __construct($value)
-	{
-		$this->int = $value;
-	}
+    function __construct($value)
+    {
+        $this->int = $value;
+    }
 }
 
 class Tree
 {
-	public $root;
+    public $root;
 
-	function convert_to_binary_search_tree($array)
-	{
-		$branched_array = $this->convert_to_branch($array);
-		for($i = 1; $i < count($branched_array); $i++)
-		{
-			$this->addBranch($branched_array[$i], $this->root);
-		}
-	}
+    function convert_to_binary_search_tree($array)
+    {
+        $branched_array = $this->convert_to_branch($array);
+        for($i = 1; $i < count($branched_array); $i++)
+        {
+            $this->addBranch($branched_array[$i], $this->root);
+        }
+    }
 
-	function convert_to_branch($array)
-	{
-		$node_array = array();
+    function convert_to_branch($array)
+    {
+        $node_array = array();
 
-		foreach($array as $value)
-		{
-			$node_array[] = new Branch($value);
-		}
-		$this->root = $node_array[0];
-		return $node_array;
-	}
+        foreach($array as $value)
+        {
+            $node_array[] = new Branch($value);
+        }
+        $this->root = $node_array[0];
+        return $node_array;
+    }
 
-	function addBranch($value, $start)
-	{
-		if($value->int > $start->int)
-		{
-			if($start->right)
-			{
-				$this->addBranch($value,$start->right);
-			}
-			else
-			{
-				$start->right = $value;
-			}
-		}
-		else if ($value->int < $start->int)
-		{
-			if($start->left)
-			{
-				$this->addBranch($value, $start->left);
-			}
-			else 
-			{
-				$start->left = $value;
-			}
-		}
-		else 
-		{
-			if($start->left == NULL)
-			{
-				$start->left = $value;
-			}
-			elseif($start->right == NULL)
-			{
-				$start->right = $value;
-			}
-			else
-			{
-				$this->addBranch($value, $start->left);
-			}
-		}
-	}
-
+    function addBranch($value, $start)
+    {
+        if($value->int > $start->int)
+        {
+            if($start->right)
+            {
+                $this->addBranch($value,$start->right);
+            }
+            else
+            {
+                $start->right = $value;
+            }
+        }
+        else if ($value->int < $start->int)
+        {
+            if($start->left)
+            {
+                $this->addBranch($value, $start->left);
+            }
+            else
+            {
+                $start->left = $value;
+            }
+        }
+        else
+        {
+            if($start->left == NULL)
+            {
+                $start->left = $value;
+            }
+            elseif($start->right == NULL)
+            {
+                $start->right = $value;
+            }
+            else
+            {
+                $this->addBranch($value, $start->left);
+            }
+        }
+    }
 
 }
 $new_tree = new Tree();
