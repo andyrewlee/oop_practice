@@ -2,13 +2,13 @@
 
 class Branch
 {
-    public $int;
+    public $value;
     public $left;
     public $right;
 
     function __construct($value)
     {
-        $this->int = $value;
+        $this->value = $value;
     }
 }
 
@@ -21,10 +21,10 @@ class Tree
         $branched_array = $this->convert_to_branch($array);
         for($i = 1; $i < count($branched_array); $i++)
         {
-            $this->addBranch($branched_array[$i], $this->root);
+            $this->add_branch($branched_array[$i], $this->root);
         }
     }
-function convert_to_branch($array)
+    function convert_to_branch($array)
     {
         $node_array = array();
 
@@ -36,24 +36,55 @@ function convert_to_branch($array)
         return $node_array;
     }
 
-    function addBranch($value, $start)
+    function find_branch($value,$start)
     {
-        if($value->int > $start->int)
+        if ($value == $start->value)
+        {
+            return TRUE;
+        }
+        else if ($value > $start->value && $start->right)
+        {
+            return $this->find_branch($value, $start->right);
+        }
+        else if ($value < $start->value && $start->left)
+        {
+            return $this->find_branch($value, $start->left);
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+
+
+        // if ($value == $this->root)
+        // {
+        //     return $this->root;
+        // }
+        // else if ($value->value > $start->value)
+        // {
+        //     if ($this->)
+        // }
+
+
+    function add_branch($value, $start)
+    {
+        if($value->value > $start->value)
         {
             if($start->right)
             {
-                $this->addBranch($value,$start->right);
+                $this->add_branch($value,$start->right);
             }
             else
             {
                 $start->right = $value;
             }
         }
-        else if ($value->int < $start->int)
+        else if ($value->value < $start->value)
         {
             if($start->left)
             {
-                $this->addBranch($value, $start->left);
+                $this->add_branch($value, $start->left);
             }
             else
             {
@@ -72,22 +103,27 @@ function convert_to_branch($array)
             }
             else
             {
-                $this->addBranch($value, $start->left);
+                $this->add_branch($value, $start->left);
             }
         }
     }
 
 }
 $new_tree = new Tree();
-$new_tree->convert_to_binary_search_tree([24,6,96,100,150,95,13,5,0,12,15]);
+$new_tree->convert_to_binary_search_tree(['apple', 'aaron', 'banana', 'ball', 'carrot']);
 
 
-echo "root" . "<br>";
-var_dump($new_tree->root);
-echo "root left" . "<br>";
-var_dump($new_tree->root->left);
-echo "root right" . "<br>";
-var_dump($new_tree->root->right);
+var_dump($new_tree->find_branch('ball', $new_tree->root)); // true
+
+var_dump($new_tree->find_branch('bsada', $new_tree->root)); // false
+
+
+// echo "root" . "<br>";
+// var_dump($new_tree->root);
+// echo "root left" . "<br>";
+// var_dump($new_tree->root->left);
+// echo "root right" . "<br>";
+// var_dump($new_tree->root->right);
 
 
 
