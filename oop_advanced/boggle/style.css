@@ -36,3 +36,23 @@ input[type="submit"] {
     color: #3399FF;
     width: 100px;
 }
+
+.flash {
+    color: white;
+    padding: 20px 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.score {
+    background-color: #33CC66;
+
+}
+
+.error {
+    background-color: salmon;
+}
+
+#reset {
+    color: purple;
+}
